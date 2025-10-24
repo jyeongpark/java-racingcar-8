@@ -12,7 +12,7 @@ mvc 패턴을 이용한 자동차 경주
 ### Main
 
 - **Application**
-    - [ ] RacingCarController 통해 자동차 경주를 실행한다.
+    - [X] RacingCarController 통해 자동차 경주를 실행한다.
 
 ### Model
 
