@@ -51,9 +51,9 @@ mvc 패턴을 이용한 자동차 경주
 - OutputView
   > 자동차 경주에서 실행 결과를 출력하는 UI 역할을 담당한다.
     - ExecutionOutput
-        - [ ] 각 횟수 별 실행 결과를 출력한다.
+        - [X] 각 횟수 별 실행 결과를 출력한다.
     - WinnerOutput
-        - [ ] 최종 우승자를 출력한다
+        - [X] 최종 우승자를 출력한다
 
 ### Controller
 
