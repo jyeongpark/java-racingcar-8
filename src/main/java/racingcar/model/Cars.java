@@ -33,9 +33,10 @@ public class Cars {
         return cars.size();
     }
 
-    public List<Car> getWinner() {
+    public List<String> findWinners() {
         Integer winnerDistance = getWinnerDistance();
-        return this.cars.stream().filter(car -> Objects.equals(car.getDistance(), winnerDistance)).toList();
+        return this.cars.stream().filter(car -> Objects.equals(car.getDistance(), winnerDistance)).map(Car::getName)
+                .toList();
     }
 
     private Integer getWinnerDistance() {
