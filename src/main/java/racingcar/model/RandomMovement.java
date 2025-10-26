@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class RandomMovement {
-    public static List<Boolean> getRandoms(Integer carSize) {
-        return IntStream.range(0, carSize).mapToObj(i -> getRandom()).toList();
+    public static final int RANDOM_MIN = 0;
+    public static final int RANDOM_MAX = 9;
+
+    public static List<Integer> generateNumbers(int carSize) {
+        return IntStream.range(0, carSize)
+                .mapToObj(i -> generateRandomNumber())
+                .toList();
     }
 
-    private static boolean getRandom() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+    private static int generateRandomNumber() {
+        return Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
     }
 }

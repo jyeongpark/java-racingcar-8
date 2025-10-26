@@ -15,19 +15,15 @@ public class RacingCarController {
         Cars cars = new Cars(inputValue);
         Integer attemptValue = AttemptInputView.attemptInput();
         OutputView output = new OutputView();
-        tried(cars, attemptValue, output);
+        executeRound(cars, attemptValue, output);
         List<Car> winner = cars.getWinner();
         output.printWinner(winner);
     }
 
-    private void tried(Cars cars, Integer attemptValue, OutputView output) {
+    private void executeRound(Cars cars, Integer attemptValue, OutputView output) {
         output.printMessage();
         for (int i = 0; i < attemptValue; i++) {
-            List<Boolean> randoms = RandomMovement.getRandoms(cars.size());
-            cars.moveCars(randoms);
-            executionOutput.output(cars);
-            executionOutput.printEnter();
-            output.printCarsDistance(cars);
+            List<Integer> movements = RandomMovement.generateNumbers(cars.size());
             Map<String, Integer> carsCondition = cars.moveCars(movements);
             output.printCarsDistance(carsCondition);
             output.printEnter();
