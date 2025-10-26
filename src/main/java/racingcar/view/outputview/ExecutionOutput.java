@@ -1,13 +1,13 @@
-package racingcar.view.outputView;
+package racingcar.view.outputview;
 
 import racingcar.model.Cars;
 
 public class ExecutionOutput {
-    public void executionOutput() {
+    public void printMessage() {
         System.out.println("실행 결과");
     }
 
-    public void output(Cars cars) {
+    public void printCarsDistance(Cars cars) {
         cars.printCars().forEach(System.out::println);
     }
 
