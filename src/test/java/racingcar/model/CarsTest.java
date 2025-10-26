@@ -15,8 +15,12 @@ public class CarsTest {
     @BeforeEach
     @DisplayName("문자열로 List<Car> 생성")
     void setUp() {
-        String carsName = "pobi,woni,jy";
-        cars = new Cars(carsName);
+        List<Car> racingCars = new java.util.ArrayList<>(List.of());
+        racingCars.add(new Car("pobi"));
+        racingCars.add(new Car("woni"));
+        racingCars.add(new Car("jy"));
+
+        cars = new Cars(racingCars);
     }
 
     @Test

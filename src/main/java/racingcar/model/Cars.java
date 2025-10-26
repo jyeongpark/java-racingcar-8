@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -9,13 +8,10 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Cars {
-    private static final String SPLIT_REGEX = ",";
+    private final List<Car> cars;
 
-    List<Car> cars;
-
-    public Cars(String inputValue) {
-        List<String> cars = Arrays.stream(inputValue.split(SPLIT_REGEX)).toList();
-        this.cars = cars.stream().map(Car::new).toList();
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public Map<String, Integer> moveCars(List<Integer> movement) {
