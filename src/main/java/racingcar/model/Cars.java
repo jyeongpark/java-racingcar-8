@@ -3,26 +3,30 @@ package racingcar.model;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Cars {
+    private static final String SPLIT_REGEX = ",";
+
     List<Car> cars;
 
     public Cars(String inputValue) {
-        List<String> cars = Arrays.stream(inputValue.split(",")).toList();
+        List<String> cars = Arrays.stream(inputValue.split(SPLIT_REGEX)).toList();
         this.cars = cars.stream().map(Car::new).toList();
     }
 
-    public List<String> printCars() {
-        return this.cars.stream().map(Car::showMovement).toList();
-    }
-
-    public void moveCars(List<Boolean> movement) {
+    public Map<String, Integer> moveCars(List<Integer> movement) {
+        Map<String, Integer> results = new HashMap<>();
         for (int i = 0; i < movement.size(); i++) {
-            Car car = this.cars.get(i);
-            boolean shouldMove = movement.get(i);
-            car.moveCar(shouldMove);
+            Car car = cars.get(i);
+            car.moveCar(movement.get(i));
+            results.putIfAbsent(car.getName(), car.getDistance());
         }
+
+        return results;
     }
 
     public Integer size() {
@@ -31,7 +35,7 @@ public class Cars {
 
     public List<Car> getWinner() {
         Integer winnerDistance = getWinnerDistance();
-        return this.cars.stream().filter(car -> car.getDistance() == winnerDistance).toList();
+        return this.cars.stream().filter(car -> Objects.equals(car.getDistance(), winnerDistance)).toList();
     }
 
     private Integer getWinnerDistance() {

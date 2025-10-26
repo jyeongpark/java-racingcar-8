@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import java.util.Map;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.RandomMovement;
@@ -13,8 +14,6 @@ public class RacingCarController {
         String inputValue = CarInputView.inputCarNames();
         Cars cars = new Cars(inputValue);
         Integer attemptValue = AttemptInputView.attemptInput();
-        ExecutionOutput executionOutput = new ExecutionOutput();
-        tried(cars, attemptValue, executionOutput);
         OutputView output = new OutputView();
         tried(cars, attemptValue, output);
         List<Car> winner = cars.getWinner();
@@ -29,6 +28,8 @@ public class RacingCarController {
             executionOutput.output(cars);
             executionOutput.printEnter();
             output.printCarsDistance(cars);
+            Map<String, Integer> carsCondition = cars.moveCars(movements);
+            output.printCarsDistance(carsCondition);
             output.printEnter();
         }
     }

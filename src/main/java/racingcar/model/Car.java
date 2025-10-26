@@ -20,15 +20,6 @@ public class Car {
         }
     }
 
-    public String showMovement() {
-        return String.format("%s : %s", this.name, distanceToDash());
-    }
-
-    private String distanceToDash() {
-        List<String> fixedList = Collections.nCopies(this.distance, "-");
-        return String.join("", fixedList);
-    }
-
 
     private void validateCar(String value) {
         if (value == null || value.isBlank()) {
@@ -44,7 +35,7 @@ public class Car {
         }
     }
 
-    public int getDistance() {
+    public Integer getDistance() {
         return this.distance;
     }
 
